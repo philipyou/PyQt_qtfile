@@ -213,7 +213,7 @@ class MainWindow(QMainWindow):
             return
         path = (QFileInfo(self.movies.filename()).path()
                 if self.movies.filename() else ".")
-        fname = QFileDialog.getOpenFileName(self,
+        fname ,filetype = QFileDialog.getOpenFileName(self,
                 "My Movies - Load Movie Data", path,
                 "My Movies data files ({})".format(self.movies.formats()))
         if fname:
@@ -233,7 +233,7 @@ class MainWindow(QMainWindow):
 
     def fileSaveAs(self):
         fname = self.movies.filename() if self.movies.filename() else "."
-        fname = QFileDialog.getSaveFileName(self,
+        fname ,filetype = QFileDialog.getSaveFileName(self,
                 "My Movies - Save Movie Data", fname,
                 "My Movies data files ({})".format(self.movies.formats()))
         if fname:
@@ -258,7 +258,7 @@ class MainWindow(QMainWindow):
             return
         path = (QFileInfo(self.movies.filename()).path()
                 if self.movies.filename() else ".")
-        fname = QFileDialog.getOpenFileName(self,
+        fname ,filetype= QFileDialog.getOpenFileName(self,
                 "My Movies - Import Movie Data", path,
                 "My Movies XML files (*.xml)")
         if fname:
@@ -279,7 +279,7 @@ class MainWindow(QMainWindow):
             if i > 0:
                 fname = fname[:i]
             fname += ".xml"
-        fname = QFileDialog.getSaveFileName(self,
+        fname ,fieltype = QFileDialog.getSaveFileName(self,
                 "My Movies - Export Movie Data", fname,
                 "My Movies XML files (*.xml)")
         if fname:
