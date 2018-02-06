@@ -13,8 +13,6 @@ import bisect
 import pickle
 import gzip
 from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
 from PyQt5.QtXml import *
 
 CODEC = "utf-8"
@@ -523,15 +521,17 @@ class MovieContainer(object):
                        "<!DOCTYPE MOVIES>\n"
                        "<MOVIES VERSION='1.0'>\n".format(CODEC))
             for key, movie in self.__movies:
+                text ="hello & go"
+                print(text)
                 stream << ("<MOVIE YEAR='{}' MINUTES='{}' "
                            "ACQUIRED='{}'>\n".format(movie.year,
                            movie.minutes,
                            movie.acquired.toString(Qt.ISODate))) \
-                       << "<TITLE>" << Qt.escape(movie.title) \
+                       << "<TITLE>" <<movie.title\
                        << "</TITLE>\n<NOTES>"
+
                 if movie.notes:
-                    stream << "\n" << Qt.escape(
-                            encodedNewlines(movie.notes))
+                    stream << "\n" << encodedNewlines(movie.notes)
                 stream << "\n</NOTES>\n</MOVIE>\n"
             stream << "</MOVIES>\n"
         except EnvironmentError as e:
