@@ -290,8 +290,10 @@ class MainWindow(QMainWindow):
 
 
     def editAdd(self):
+
         form = addeditmoviedlg.AddEditMovieDlg(self.movies, None,
                                                self)
+
         if form.exec_():
             self.updateTable(id(form.movie))
 
